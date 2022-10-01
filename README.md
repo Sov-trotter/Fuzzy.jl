@@ -1,18 +1,15 @@
 # Fuzzy
 
+=============
+
 Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in [Lepisma](https://github.com/lepisma/Fuzzy.jl).
 
-## TODO
-- [x] Update to julia 1.x
-
-## Build
-
-[![Build Status](https://travis-ci.org/phelipe/Fuzzy.jl.svg?branch=master)](https://travis-ci.org/phelipe/Fuzzy.jl) [![Coverage Status](https://coveralls.io/repos/phelipe/Fuzzy.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/phelipe/Fuzzy.jl?branch=master) [![codecov.io](http://codecov.io/github/phelipe/Fuzzy.jl/coverage.svg?branch=master)](http://codecov.io/github/phelipe/Fuzzy.jl?branch=master)
+[![CI](https://github.com/phelipe/Fuzzy.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/phelipe/Fuzzy.jl/actions/workflows/ci.yml)
 
 ## Install
 
 ```julia
-julia> Pkg.clone("git://github.com/phelipe/Fuzzy.jl.git")
+pkg> add Fuzzy
 ```
 
 ## QuickStart
@@ -116,8 +113,17 @@ julia> eval_fis(fis, in_vals)
   - Einstein sum (E-SUM)
   - Hamacher sum (H-SUM)
 
-## TODO
- - [ ] update to 1.0 
+## Prepare to plot your Fuzzy sets
+
+- Create points to use in plot packages using the chart_prepare
+
+```julia
+julia> input_a = Dict("small" => TriangularMF(1, 2, 3), "large" => TriangularMF(5, 6, 7));
+julia> x = range(0, 8, length = 100);
+julia> data = chart_prepare(input_a, x)
+julia> using Plots
+julia> plot(x, data["values"], label = data["names"])
+```
 
 ## License
 
